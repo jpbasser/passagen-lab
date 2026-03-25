@@ -43,20 +43,16 @@ opacity: 0.4;
   <source src="https://cdn.coverr.co/videos/coverr-a-man-walking-in-the-dark-5171/1080p.mp4" type="video/mp4">
 </video>
 
-  <h1>No recuerdo todo.</h1>
-  <p>Pero algo insiste.</p>
+<h1>No recuerdo todo.</h1>
+<p>Pero algo insiste.</p>
 
-  <br><br>
+<br><br>
 
-  <a href="voz.html" onclick="localStorage.setItem('last','voz')">una voz</a>
-  <a href="imagen.html" onclick="localStorage.setItem('last','imagen')">una imagen</a>
-  <a href="sensacion.html" onclick="localStorage.setItem('last','sensacion')">una sensación</a>
+<a href="voz.html" onclick="localStorage.setItem('last','voz')">una voz</a>
+<a href="imagen.html" onclick="localStorage.setItem('last','imagen')">una imagen</a>
+<a href="sensacion.html" onclick="localStorage.setItem('last','sensacion')">una sensación</a>
 
-  <audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b1c0c.mp3" type="audio/mpeg">
-</audio>
-
-  <script>
+<script>
   const choice = localStorage.getItem("choice");
 
   if (choice === "voz") {
@@ -72,13 +68,13 @@ opacity: 0.4;
   }
 </script>
 
-  <script>
+<script>
   let visits = localStorage.getItem("visits") || 0;
   visits++;
   localStorage.setItem("visits", visits);
 </script>
 
-  <script>
+<script>
   const visitsCount = localStorage.getItem("visits");
 
   if (visitsCount > 2) {
@@ -94,7 +90,7 @@ opacity: 0.4;
   }
 </script>
 
-  <script>
+<script>
   const last = localStorage.getItem("last");
 
   if (last === "voz") {
@@ -108,6 +104,34 @@ opacity: 0.4;
   if (last === "sensacion") {
     document.body.innerHTML += "<p>No podés salir de esto.</p>";
   }
+</script>
+
+<script>
+  const visits = localStorage.getItem("visits") || 0;
+
+  if (visits > 3) {
+    document.body.style.filter = "blur(2px)";
+  }
+
+  if (visits > 5) {
+    document.body.style.filter = "blur(4px)";
+  }
+
+  if (visits > 7) {
+    document.body.style.filter = "blur(8px)";
+  }
+</script>
+
+<audio id="bg" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_9460f9b4b3.mp3?filename=dark-ambient-113561.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  document.addEventListener("click", () => {
+    const audio = document.getElementById("bg");
+    audio.volume = 0.2;
+    audio.play();
+  });
 </script>
 
 </body>
