@@ -55,15 +55,21 @@ opacity: 0.4;
   const choice = localStorage.getItem("choice");
 
   if (choice === "voz") {
-    document.body.innerHTML += "<p>La voz vuelve.</p>";
+    const msg = document.createElement("p");
+    msg.innerText = "La voz vuelve.";
+    document.body.appendChild(msg);
   }
 
   if (choice === "imagen") {
-    document.body.innerHTML += "<p>La imagen persiste.</p>";
+    const msg = document.createElement("p");
+    msg.innerText = "La imagen persiste.";
+    document.body.appendChild(msg);
   }
 
   if (choice === "sensacion") {
-    document.body.innerHTML += "<p>La sensación no se va.</p>";
+    const msg = document.createElement("p");
+    msg.innerText = "La sensación no se va.";
+    document.body.appendChild(msg);
   }
 </script>
 
