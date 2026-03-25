@@ -59,5 +59,11 @@
   }
 </script>
 
+  <script>
+  let visits = localStorage.getItem("visits") || 0;
+  visits++;
+  localStorage.setItem("visits", visits);
+</script>
+
 </body>
 </html>
