@@ -81,5 +81,21 @@
   }
 </script>
 
+  <script>
+  const last = localStorage.getItem("last");
+
+  if (last === "voz") {
+    document.body.innerHTML += "<p>No deberías haber vuelto.</p>";
+  }
+
+  if (last === "imagen") {
+    document.body.innerHTML += "<p>La imagen te sigue.</p>";
+  }
+
+  if (last === "sensacion") {
+    document.body.innerHTML += "<p>No podés salir de esto.</p>";
+  }
+</script>
+
 </body>
 </html>
