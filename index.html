@@ -1,126 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PASSAGEN LAB 01</title>
+  <title>PASSAGEN LAB 02</title>
 
   <style>
     body {
+      margin: 0;
       background: black;
       color: white;
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 20%;
+      overflow-x: hidden;
+    }
+
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
       opacity: 0;
-      transition: opacity 2s;
+      transform: translateY(50px);
+      transition: all 1s ease;
     }
 
-    a {
-      color: white;
-      text-decoration: none;
-      display: block;
-      margin: 10px;
-      opacity: 0.6;
-    }
-
-    a:hover {
+    section.active {
       opacity: 1;
+      transform: translateY(0);
+    }
+
+    #video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.2;
+    }
+
+    .glitch {
+      animation: glitch 0.3s infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      25% { transform: translate(-2px, 2px); }
+      50% { transform: translate(2px, -2px); }
+      75% { transform: translate(-1px, 1px); }
+      100% { transform: translate(0); }
     }
   </style>
 </head>
 
-<body onload="document.body.style.opacity='1'">
+<body>
 
-<h1>No recuerdo todo.</h1>
-<p>Pero algo insiste.</p>
+<video id="video-bg" autoplay muted loop>
+  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+</video>
 
-<br><br>
-
-<a href="voz.html" onclick="localStorage.setItem('last','voz')">una voz</a>
-<a href="imagen.html" onclick="localStorage.setItem('last','imagen')">una imagen</a>
-<a href="sensacion.html" onclick="localStorage.setItem('last','sensacion')">una sensación</a>
-
-<script>
-  const choice = localStorage.getItem("choice");
-
-  if (choice === "voz") {
-    const msg = document.createElement("p");
-    msg.innerText = "La voz vuelve.";
-    document.body.appendChild(msg);
-  }
-
-  if (choice === "imagen") {
-    const msg = document.createElement("p");
-    msg.innerText = "La imagen persiste.";
-    document.body.appendChild(msg);
-  }
-
-  if (choice === "sensacion") {
-    const msg = document.createElement("p");
-    msg.innerText = "La sensación no se va.";
-    document.body.appendChild(msg);
-  }
-</script>
+<section>no recuerdo todo</section>
+<section>pero algo insiste</section>
+<section>no sé si esto pasó</section>
+<section class="glitch">o lo estoy inventando</section>
+<section>esto no debería estar acá</section>
+<section id="final">ya no es lo mismo</section>
 
 <script>
-  let visits = localStorage.getItem("visits") || 0;
-  visits++;
-  localStorage.setItem("visits", visits);
-</script>
+  const sections = document.querySelectorAll("section");
 
-<script>
-  const visitsCount = localStorage.getItem("visits");
+  window.addEventListener("scroll", () => {
+    const trigger = window.innerHeight * 0.8;
 
-  if (visitsCount > 2) {
-    document.body.style.opacity = 0.7;
-  }
+    sections.forEach(sec => {
+      const top = sec.getBoundingClientRect().top;
 
-  if (visitsCount > 4) {
-    document.body.style.opacity = 0.4;
-  }
-
-  if (visitsCount > 6) {
-  document.body.style.background = "black";
-  document.body.innerHTML += "<h1>Ya no es lo mismo.</h1>";
-}
-</script>
-
-<script>
-  const last = localStorage.getItem("last");
-
-  if (last === "voz") {
-    document.body.innerHTML += "<p>No deberías haber vuelto.</p>";
-  }
-
-  if (last === "imagen") {
-    document.body.innerHTML += "<p>La imagen te sigue.</p>";
-  }
-
-  if (last === "sensacion") {
-    document.body.innerHTML += "<p>No podés salir de esto.</p>";
-  }
-</script>
-
-<script>
-  const visits = localStorage.getItem("visits") || 0;
-
-  if (visits > 3) {
-    document.body.style.filter = "blur(2px)";
-  }
-
-  if (visits > 5) {
-    document.body.style.filter = "blur(4px)";
-  }
-
-  if (visits > 7) {
-    document.body.style.filter = "blur(8px)";
-  }
-</script>
-
-<script>
-  document.addEventListener("click", () => {
-    const audio = document.getElementById("bg");
-    audio.volume = 0.2;
-    audio.play();
+      if (top < trigger) {
+        sec.classList.add("active");
+      }
+    });
   });
 </script>
 
