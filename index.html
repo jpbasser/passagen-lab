@@ -43,5 +43,21 @@
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b1c0c.mp3" type="audio/mpeg">
 </audio>
 
+  <script>
+  const choice = localStorage.getItem("choice");
+
+  if (choice === "voz") {
+    document.body.innerHTML += "<p>La voz vuelve.</p>";
+  }
+
+  if (choice === "imagen") {
+    document.body.innerHTML += "<p>La imagen persiste.</p>";
+  }
+
+  if (choice === "sensacion") {
+    document.body.innerHTML += "<p>La sensación no se va.</p>";
+  }
+</script>
+
 </body>
 </html>
