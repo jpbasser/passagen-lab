@@ -2,17 +2,42 @@
 <html>
 <head>
   <title>PASSAGEN LAB 01</title>
+
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 20%;
+      opacity: 0;
+      transition: opacity 2s;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin: 10px;
+      opacity: 0.6;
+    }
+
+    a:hover {
+      opacity: 1;
+    }
+  </style>
 </head>
-<body style="background:black; color:white; font-family:sans-serif; text-align:center; padding-top:20%;">
+
+<body onload="document.body.style.opacity='1'">
 
   <h1>No recuerdo todo.</h1>
   <p>Pero algo insiste.</p>
 
   <br><br>
 
-  <a href="voz.html" style="color:white;">una voz</a><br>
-  <a href="imagen.html" style="color:white;">una imagen</a><br>
-  <a href="sensacion.html" style="color:white;">una sensación</a>
+  <a href="voz.html">una voz</a>
+  <a href="imagen.html">una imagen</a>
+  <a href="sensacion.html">una sensación</a>
 
 </body>
 </html>
