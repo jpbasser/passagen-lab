@@ -2,7 +2,15 @@
 <html>
 <body style="background:black; color:white; text-align:center; padding-top:20%;">
   <p>Algo que no puedo nombrar.</p>
-  <a href="index.html">volver</a>
+  <a id="back" href="index.html">volver</a>
+
+<script>
+  const visits = localStorage.getItem("visits") || 0;
+
+  if (visits > 3) {
+    document.getElementById("back").remove();
+  }
+</script>
 
   <script>
   localStorage.setItem("choice", "sensacion");
